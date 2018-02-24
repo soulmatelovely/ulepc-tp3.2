@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>优乐-{$title}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/Public/home/img/x_icon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="__PUBLIC__/home/css/reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/home/css/finan.css">
+    <link rel="stylesheet" href="/Public/home/css/idangerous.swiper.css">
+    <script type="text/javascript" src="__PUBLIC__/home/js/jquery-1.8.3.min.js"></script>
+    <script src="/Public/home/js/idangerous.swiper.min.js"></script>
+    <style>
+        a {
+            text-decoration: none
+        }
+
+        .device ,.all{
+            width: 100%;
+            height: 640px;
+            padding: 0px 40px;
+            position: relative;
+        }
+
+        .device .arrow-left,.all .arrow-left {
+            background: url(/Public/home/img/left.png) no-repeat left top;
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            margin-top: -15px;
+            width: 20px;
+            height: 35px;
+        }
+
+        .device .arrow-right, .all .arrow-right {
+            background: url(/Public/home/img/right.png) no-repeat left bottom;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            margin-top: -15px;
+            width: 20px;
+            height: 35px;
+        }
+
+        .device .swiper-container ,.all .swiper-container{
+            height: 640px;
+            width: 100%;
+            padding-top: 15px;
+        }
+
+        .content-slide {
+            padding: 20px;
+            color: #fff;
+        }
+
+        .title {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .pagination {
+            position: absolute;
+            left: 0;
+            text-align: center;
+            bottom: 5px;
+            width: 100%;
+        }
+
+        .swiper-pagination-switch {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 10px;
+            background: #999;
+            box-shadow: 0px 1px 2px #555 inset;
+            margin: 0 3px;
+            cursor: pointer;
+        }
+
+        .swiper-active-switch {
+            background: #fff;
+        }
+
+        .pagination {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg">
+<div class="main">
+
+    <include file="Public/header"/>
+
+    <div class="content after">
+
+        <include file="Public/tab_after"/>
+
+
+        <div class="finance after">
+            <div class="left_finance">
+                <div class="nape_title">
+                    热门推荐  
+                </div>
+                <div class="use_ul after">
+                    <div class="device">
+                        <a class="arrow-left" href="#"></a>
+                        <a class="arrow-right" href="#"></a>
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+
+                                <volist name="recommend" id="data">
+
+                                    <div class="swiper-slide">
+                                        <volist name="data" id="data">
+                                            <div class="use_li">
+                                                <a href="{:U('Market/details',['app_id'=>$data['gameid']])}" target="_blank"><img
+                                                        src="{$Think.config.OSS_DOMAIN}{$data['picture']}" alt=""></a>
+                                                <p class="user_li_title">{$data.name}</p>
+                                                <a href="{:U('Index/appDownload',['app_id'=>$data['gameid']])}">
+                                                    <div class="button">立即下载</div>
+                                                </a>
+                                            </div>
+                                        </volist>
+
+                                    </div>
+
+                                </volist>
+                                <!-- <div class="swiper-slide">3</div> -->
+                            </div>
+                        </div>
+                        <div class="pagination"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="right_finance">
+                <div class="nape_title">
+                    下载排行榜
+                </div>
+                <ul class="sisters_ul">
+
+                    <volist name="download_rank" id="data">
+                        <li class="sisters_li after">
+                            <div class="finance_num">
+                                <if condition="$key eq 0">
+
+                                    <div class="finance_font red">{$key+1}</div>
+
+                                    <elseif condition="$key eq 1"/>
+                                    <div class="finance_font orange">{$key+1}</div>
+                                    <elseif condition="$key eq 2"/>
+                                    <div class="finance_font blue">{$key+1}</div>
+                                    <else/>
+                                    <div class="finance_font">{$key+1}</div>
+
+                                </if>
+                                <!-- <div class="finance_font ">{$key+1}</div> -->
+                            </div>
+                            <a href="{:U('Market/details',['app_id'=>$data['id']])}" target="_blank"><img class="finance_img"
+
+                     src="{$Think.config.OSS_DOMAIN}{$data['picture']}"
+                                                              alt=""></a>
+                            <div class="finance_con">
+                                <p class="down_title">{$data.name}</p>
+                                <!-- <p class="down_num">1232万次下载</p> -->
+                                <p class="down_num">
+                                    <if condition="$data.people gt 10000">
+                                        {:sprintf('%.2f', $data['people']/10000)} 万
+                                        <else/>
+                                        {$data.people}
+                                    </if>
+                                    次下载
+
+                                </p>
+                            </div>
+                            <a href="{:U('Index/appDownload',['app_id'=>$data['gameid']])}">
+                                <div class="down_button">下载</div>
+                            </a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+        <!--  <img class="small_banner" src="__PUBLIC__/home/img/icon20.png" alt=""> -->
+         <a href="{:U('Market/details',['app_id'=>$banner['appid']])}" target="_blank">
+        <img class="small_banner" src="{$Think.config.OSS_DOMAIN}{$banner['picture']}" alt="">
+        </a>
+        <div class="finance after">
+            <div class="left_finance">
+                <div class="nape_title">
+                    全部应用
+                </div>
+                <div class="use_ul after">
+                    <div class="all">
+                        <a class="arrow-left" href="#"></a>
+                        <a class="arrow-right" href="#"></a>
+                        <div class="swiper-container all_container">
+                            <div class="swiper-wrapper">
+
+                            <volist name="app_list" id="arr">
+                                <div class="swiper-slide">
+                                    <volist name="arr" id="data">
+                                        <div class="use_li">
+                                            <a href="{:U('Market/details',['app_id'=>$data['gameid']])}" target="_blank"><img
+                                                    src="{$Think.config.OSS_DOMAIN}{$data['picture']}" alt=""></a>
+                                            <p class="user_li_title">{$data.name}</p>
+                                            <a href="{:U('Index/appDownload',['app_id'=>$data['gameid']])}">
+                                                <div class="button">立即下载</div>
+                                            </a>
+                                        </div>
+                                    </volist>
+
+                                </div>
+                            </volist>
+                                <!-- <div class="swiper-slide">3</div> -->
+                            </div>
+                        </div>
+                        <div class="pagination"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="right_finance">
+                <div class="nape_title">
+                    飙升排行榜
+                </div>
+                <ul class="sisters_ul">
+
+                    <volist name="soaring_rank" id="data">
+                        <li class="sisters_li after">
+                            <div class="finance_num">
+
+                                <if condition="$key eq 0">
+
+                                    <div class="finance_font red">{$key+1}</div>
+
+                                    <elseif condition="$key eq 1"/>
+                                    <div class="finance_font orange">{$key+1}</div>
+                                    <elseif condition="$key eq 2"/>
+                                    <div class="finance_font blue">{$key+1}</div>
+                                    <else/>
+                                    <div class="finance_font">{$key+1}</div>
+
+                                </if>
+
+                                <!-- <div class="finance_font">{$key+1}</div> -->
+                            </div>
+                            <a href="{:U('Market/details',['app_id'=>$data['id']])}" target="_blank"> <img class="finance_img"
+                                                                                           src="{$Think.config.OSS_DOMAIN}{$data['picture']}"
+                                                                                           alt=""></a>
+                            <div class="finance_con">
+                                <p class="down_title">{$data.name}</p>
+                              <!--   <p class="down_num">
+                                    <if condition="$arr.people gt 10000">
+                                        {:sprintf('%.2f', $data['people']/10000)} 万
+                                        <else/>
+                                        {$data.people}
+                                    </if>
+                                    次下载
+
+                                </p> -->
+                            </div>
+                            <a href="{:U('Index/appDownload',['app_id'=>$data['gameid']])}">
+                                <div class="down_button">下载</div>
+                            </a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="h_40"></div>
+    <include file="Public/footer"/>
+</div>
+</body>
+<script type="text/javascript" src="__PUBLIC__/home/js/search.js"></script>
+<script>
+
+    $(function () {
+        var type = "{$type}";
+        $('.tab_li_img').hide();
+        $('#' + type).show();
+        $('.tab_li').removeClass("tab_active");
+        $('#' + type).parents('.tab_li').addClass("tab_active");
+
+        var mySwiper = new Swiper('.swiper-container', {
+            pagination: '.device .pagination',
+            loop: true,
+            paginationClickable: false
+        })
+        $('.device .arrow-left').on('click', function (e) {
+            e.preventDefault()
+            mySwiper.swipePrev()
+        })
+        $('.device .arrow-right').on('click', function (e) {
+            e.preventDefault()
+            mySwiper.swipeNext()
+        })
+        var mySwipers = new Swiper('.all_container', {
+            pagination: '.all .pagination',
+            loop: true,
+            paginationClickable: false
+        })
+        $('.all .arrow-left').on('click', function (e) {
+            e.preventDefault()
+            mySwipers.swipePrev()
+        })
+        $('.all .arrow-right').on('click', function (e) {
+            e.preventDefault()
+            mySwipers.swipeNext()
+        })
+    })
+
+
+</script>
+</html>

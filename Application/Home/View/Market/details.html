@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>优乐-{$title}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/Public/home/img/x_icon.png">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="__PUBLIC__/home/css/reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/home/css/details.css">
+     <script type="text/javascript" src="__PUBLIC__/home/js/jquery-1.8.3.min.js"></script>
+      <style>
+        a{text-decoration: none}
+    </style>
+</head>
+<body class="bg">
+<div class="main">
+   
+    <include file="Public/header" />  
+
+    <div class="content after">
+      
+        <include file="Public/tab_after" /> 
+
+        <div class="details_con">
+            <img class="details_con_img" src="{$Think.config.OSS_DOMAIN}{$app_info['picture']}" alt="">
+            <div class="details_font">
+                <p class="details_title">{$app_info.name}</p>
+                <div class="num">
+                    <div class="star">
+ 
+                        <!-- <img src="__PUBLIC__/home/img/icon23.png" alt=""> -->
+                        <img src="__PUBLIC__/home/img/star{:ceil($app_info['comment'])}.png" alt="">
+                        <span>{$app_info.comment}分</span>
+                    </div>
+                    <p class="down">大小：<span>{$app_info.apk_size}M</span>
+					<notempty name="app_info['version_name']">
+					 版本：<span>V{$app_info.version_name}</span>	 
+					</notempty>
+
+                           下载次数：<span>
+
+                            <if condition="$app_info.people gt 10000">
+                            {:sprintf('%.2f', $app_info['people']/10000)} 万
+                            <else /> 
+                            {$app_info.people}
+                            </if>
+                            次下载
+
+                    </span></p>
+                </div>
+            </div>
+            <div class="erweima">
+                <!-- <img src="__PUBLIC__/home/img/icon24.png" alt=""> -->
+                <img src="{$app_info.erweima}" alt="">
+                <p>扫描二维码下载</p>
+            </div>
+            <a href="{:U('Index/appDownload',['app_id'=>$app_info['id']])}"><div class="button">
+                一键下载
+            </div></a>
+        </div>
+        <div class="nape_title">
+            应用详情
+        </div>
+        <div class="details">
+            <div class="details_img after">
+                 <volist name="app_info.screenshot" id="arr">
+                    <img src="{$Think.config.OSS_DOMAIN}{$arr}" alt="">
+                 </volist>    
+            </div>
+            <div class="details_text">
+                <pre><!-- 每日瑜伽」— 健身、减肥、塑形、马甲线、瘦身计划，冥想减压睡眠必备，你的专属瑜伽视频教练
+
+瑜伽中遇到的常见问题：
+-只看网络图片学不会、做不好瑜伽体式
+-没有时间精力去瑜伽馆，想要随时随地能练习
+-身边没有共同爱好瑜伽者，无法分享交流
+
+来「每日瑜伽」吧：
+-全面的体式词典，科学的训练课程与计划，加速实现你的蜕变
+-无论在你是在家还是在公司，随时选择不同时长来习练
+-有料的社区内容，专业的答疑与解惑，陪你一起跨过瓶颈再提升。 -->
+
+                {$app_info.introduce}
+
+                </pre>
+                <p class="message"> 作者：{$app_info.developer}	<!-- 更新时间：2017-04-21 --></p>
+                <p class="message">版本：V{$app_info.version_name}系统：Android 4.0以上</p>
+                <p class="message"> 语言：中文</p>
+            </div>
+        </div>
+        <div class="evaluate">
+            <div class="left_evaluate">
+                <div class="eval_main">
+                    <ul class="option_title" >
+                       
+                        <li style="width: 100px;" class="option_active"> <a href="javascript:void(0)" class="comment" val='all'>全部</a></li>
+                        <li><a href="javascript:void(0)" class="comment" val='good'>好评（<span>{$comment['good_num']}</span>）</a></li>
+                        <li><a href="javascript:void(0)" class="comment" val='mid'>一般（<span>{$comment['mid_num']}</span>）</a></li>
+                       <li> <a href="javascript:void(0)" class="comment" val='bad'>差评（<span>{$comment['bad_num']}</span>）</a></li>
+                    </ul>
+                    <div class="discuss">
+                        <ul id="comment" app_id="{$app_info.id}">
+                        <volist name="comment['data']" id="arr">
+							
+				<if condition="$arr['grade'] lt 6 "> 
+ 
+                            <li class="after">
+                                <div class="img"><img src="__PUBLIC__/home/img/abc.jpg" alt=""></div>
+                                <div class="name"><b>{$arr.petname}</b><img src="__PUBLIC__/home/img/star{:ceil($arr['grade'])}.png" alt="">{$arr.grade}分</div>
+                                <p class="time">{:date("Y-m-d H:i:s",$arr['time'])}</p>
+                                <p class="clear_p">
+                                    
+                                    {$arr.info}
+                                   </p>
+                            </li>
+				</if>
+                        
+                        </volist>
+   
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="right_evaluate">
+                <div class="nape_title">
+                    下载排行榜
+                </div>
+                <ul class="sisters_ul">
+                <volist name="download_rank" id="arr">
+                    <li class="sisters_li after">
+                    <a href="{:U('Market/details',['app_id'=>$arr['gameid']])}">
+                        <img class="finance_img" src="{$Think.config.OSS_DOMAIN}{$arr['picture']}" alt=""></a>
+                        <div class="finance_con">
+                            <p class="down_title">{$arr.name}</p>
+                            <p class="down_num">
+                                <if condition="$arr.people gt 10000">
+                                        {:sprintf('%.2f', $arr['people']/10000)} 万
+                                        <else/>
+                                        {$arr.people}
+                                </if>
+                                    次下载
+
+                            </p>
+                        </div>
+                        <a href="{:U('Index/appDownload',['app_id'=>$arr['gameid']])}"><div class="down_button">下载</div></a>
+                    </li>
+                    </volist>
+ 
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="h_40"></div>
+     <include file="Public/footer" /> 
+</div>
+</body>
+ <script type="text/javascript" src="__PUBLIC__/home/js/search.js"></script>
+ <script type="text/javascript">
+
+(function($) {
+    $.extend({
+        myTime: {
+            /**
+             * 当前时间戳
+             * @return <int>        unix时间戳(秒)  
+             */
+            CurTime: function(){
+                return Date.parse(new Date())/1000;
+            },
+            /**              
+             * 日期 转换为 Unix时间戳
+             * @param <string> 2014-01-01 20:20:20  日期格式              
+             * @return <int>        unix时间戳(秒)              
+             */
+            DateToUnix: function(string) {
+                var f = string.split(' ', 2);
+                var d = (f[0] ? f[0] : '').split('-', 3);
+                var t = (f[1] ? f[1] : '').split(':', 3);
+                return (new Date(
+                        parseInt(d[0], 10) || null,
+                        (parseInt(d[1], 10) || 1) - 1,
+                        parseInt(d[2], 10) || null,
+                        parseInt(t[0], 10) || null,
+                        parseInt(t[1], 10) || null,
+                        parseInt(t[2], 10) || null
+                        )).getTime() / 1000;
+            },
+            /**              
+             * 时间戳转换日期              
+             * @param <int> unixTime    待时间戳(秒)              
+             * @param <bool> isFull    返回完整时间(Y-m-d 或者 Y-m-d H:i:s)              
+             * @param <int>  timeZone   时区              
+             */
+            UnixToDate: function(unixTime, isFull, timeZone) {
+                if (typeof (timeZone) == 'number')
+                {
+                    unixTime = parseInt(unixTime) + parseInt(timeZone) * 60 * 60;
+                }
+                var time = new Date(unixTime * 1000);
+                var ymdhis = "";
+                ymdhis += time.getUTCFullYear() + "-";
+                ymdhis += (time.getUTCMonth()+1) + "-";
+                ymdhis += time.getUTCDate();
+                if (isFull === true)
+                {
+                    ymdhis += " " + time.getUTCHours() + ":";
+                    ymdhis += time.getUTCMinutes() + ":";
+                    ymdhis += time.getUTCSeconds();
+                }
+                return ymdhis;
+            }
+        }
+    });
+})(jQuery);
+
+// console.log($.myTime.UnixToDate(1325347200,true));
+
+$(function(){
+    $('a.comment').click(function(){
+
+        var type=$(this).attr('val');
+        var app_id=$('ul#comment').attr('app_id');
+        
+            $(this).parents("li").addClass("option_active").siblings("li").removeClass("option_active")
+
+            $.get("{:U('Market/getComment')}", {app_id:app_id,type: type },
+              function(data){
+                console.log(data)
+                var html='';
+                  
+                     
+                    if (data.code==1) {
+                        $.each(data.data.data, function(i, n){
+                          html+='<li class="after">\
+                                <div class="img"><img src="__PUBLIC__/home/img/abc.jpg" alt=""></div>\
+                                <div class="name"><b>'+n.petname+
+                                '</b><img src="__PUBLIC__/home/img/star' +Math.ceil(n.grade)+'.png" >'+n.grade+
+                                '分'+'</div>\
+                                <p class="time">'+$.myTime.UnixToDate(n.time,true,8)+'</p>\
+                                <p class="clear_p">'+n.info+'</p>\
+                            </li>';
+                        });
+
+                        $('ul#comment').html(html);
+                        // console.log(html);
+
+                    }
+             },'json');
+    })
+})
+ </script>
+</html>

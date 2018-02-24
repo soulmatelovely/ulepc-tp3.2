@@ -1,0 +1,17 @@
+应用列表
+ 
+http://api.ule.onweone.com/App/findAppByType/?type=default&page=2&page_size=3
+
+推荐列表
+
+ 
+http://www.youle.com/T/findRecommendAppByType?type=default&page=2&page_size=3
+
+金融列表
+
+http://api.ule.onweone.com/App/findBankingAppByType?type=default&page=2&page_size=3
+
+游戏列表
+
+http://api.ule.onweone.com/App/
+findGameByType?type=default&page=2&page_size=3

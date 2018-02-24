@@ -1,0 +1,13 @@
+
+理财：  年化收益【数字输入框】  （income）
+
+	标期  【从xx- xx 填入数字】 天 （bit_start）（bit_end）
+
+	起投金额 【数字】 元   （account） 
+
+
+贷款： 额度 【从xx 元-- xx元】  （limit_start） （limit_end）
+
+	利率 【数字输入框 】%    （interest）
+	
+	审核速度 【从xx 天-- xx 天】  （verify_start）  （verify_end）

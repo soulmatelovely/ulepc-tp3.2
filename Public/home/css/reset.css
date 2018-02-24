@@ -1,0 +1,62 @@
+﻿html,body,div,span,
+applet,object,iframe,
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,
+a,abbr,acronym,address,big,cite,code,
+del,dfn,em,font,img,ins,kbd,q,s,samp,
+small,strike,strong,sub,sup,tt,var,
+dd,dt,li,ol,ul,
+fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+ol,ul {
+	list-style: none;
+}
+q:before,q:after,
+blockquote:before,blockquote:after {
+	content: "";
+}
+td{
+	border: 1px solid #cccccc;
+}
+*{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	font-family: 'Hiragino Sans GB',STHeiti,'Microsoft Yahei',helvetica,arial,sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+.after:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.footer{
+	width: 100%;
+	background:#353535;
+	height:197px;
+	padding-top: 35px;
+	text-align: center;
+	font-size:14px;
+	color:#9b9b9b;
+	letter-spacing:0px;
+	line-height:25px;
+}
+.footer_font{
+	font-size:14px;
+	color:#dbdbdb;
+	letter-spacing:0;
+	line-height:14px;
+	text-align:center;
+	margin-top: 20px;
+	margin-bottom: 26px;
+}
+.hoverm{
+	z-index: 2;
+}

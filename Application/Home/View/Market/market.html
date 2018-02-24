@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="/Public/home/img/x_icon.png">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>优乐-{$title}</title>
+    <link rel="stylesheet" href="__PUBLIC__/home/css/reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/home/css/market.css">
+    <link rel="stylesheet" href="/Public/home/css/idangerous.swiper.css">
+     <script type="text/javascript" src="__PUBLIC__/home/js/jquery-1.8.3.min.js"></script>
+    <script src="/Public/home/js/idangerous.swiper.min.js"></script>
+    <style>
+
+    a{text-decoration: none}
+    .device ,.recommend,.essential{
+        width: 100%;
+        height: 290px;
+        padding: 0px 0px;
+        position: relative;
+    }
+    .recommend,.essential{
+        height: 200px;
+        padding: 0px 45px;
+    }
+    .recommend .arrow-left,.essential .arrow-left{
+        background: url(/Public/home/img/left.png) no-repeat left top;
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        margin-top: -15px;
+        width: 20px;
+        height: 35px;
+    }
+    .recommend .arrow-right,.essential .arrow-right {
+        background: url(/Public/home/img/right.png) no-repeat left bottom;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        margin-top: -15px;
+        width: 20px;
+        height: 35px;
+    }
+    .device .swiper-container {
+        height: 290px;
+        width: 100%;
+    }
+    .recommend .swiper-container,.essential .swiper-container{
+        height: 200px;
+        width: 100%;
+    }
+    .content-slide {
+        padding: 0px;
+        color: #fff;
+    }
+    .title {
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
+    .pagination {
+        position: absolute;
+        left: 0;
+        text-align: center;
+        bottom:5px;
+        width: 100%;
+    }
+    .swiper-pagination-switch {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        background: #999;
+        box-shadow: 0px 1px 2px #555 inset;
+        margin: 0 3px;
+        cursor: pointer;
+    }
+    .swiper-active-switch {
+        background: #fff;
+    }
+    .pagination{
+        /*display: none;*/
+        z-index: 1;
+    }
+    .recommend .pagination, .essential .pagination{
+        display: none;
+    }
+    .use_ul{
+        padding: 20px 0px;
+    }
+        .use_li{
+            width: 185px;
+        }
+    </style>
+</head>
+<body class="bg">
+<div class="main">
+   <!-- 头部 -->
+    <include file="Public/header" />  
+   
+    <div class="content after">
+        <!-- tab after -->
+         <include file="Public/tab_after" />  
+
+        <!--<img class="small_banner" src="{$Think.config.OSS_DOMAIN}{$banner['market']['picture']}" alt="">-->
+        <div class="device">
+            <a class="arrow-left" href="#"></a>
+            <a class="arrow-right" href="#"></a>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+            <volist name="banner['market']" id="val" >
+                <div class="swiper-slide">
+                
+                        <a href="{:U('Market/details',['app_id'=>$val['appid']])}" target="_blank"><img class="small_banner" src="{$Think.config.OSS_DOMAIN}{$val['picture']}" alt=""></a>
+                </div>
+            </volist>
+                   <!--  <div class="swiper-slide">
+                        <img class="small_banner" src="{$Think.config.OSS_DOMAIN}{$banner['market']['picture']}" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="small_banner" src="{$Think.config.OSS_DOMAIN}{$banner['market']['picture']}" alt="">
+                    </div> -->
+                    <!-- <div class="swiper-slide">3</div> -->
+                </div>
+            </div>
+            <div class="pagination"></div>
+        </div>
+        <div class="nape_title">
+            热门推荐
+        </div>
+        <div class="use_ul after">
+            <div class="recommend">
+                <a class="arrow-left" href="#"></a>
+                <a class="arrow-right" href="#"></a>
+                <div class="swiper-container recommend_swiper">
+                    <div class="swiper-wrapper">
+                     <volist name="recommend_hot" id="list">
+                            <div class="swiper-slide">
+                                <volist name="list" id="arr">
+                                    <div class="use_li">
+                                        <a href="{:U('Market/details',['app_id'=>$arr['gameid']])}" target="_blank"><img src="{$Think.config.OSS_DOMAIN}{$arr['picture']}" alt=""></a>
+                                            
+                                         <!--     <p class="user_li_title"> </a>{$arr.name}</p>
+                                        <a href="{$Think.config.OSS_DOMAIN}{$arr['apk']}"><div class="button">立即下载</div></a>
+ -->
+
+                                        <p class="user_li_title"> </a>{$arr.name}</p>
+                                        <a href="{:U('Index/appDownload',['app_id'=>$arr['gameid']])}"><div class="button">立即下载</div></a>
+                                    </div>
+
+                                </volist>
+                            </div>
+                        </volist>
+                    </div>
+                </div>
+                <div class="pagination"></div>
+            </div>
+        </div>
+        <div class="nape_title">
+            精品特辑
+        </div>
+        <ul class="show_ul after">
+            <volist name="banner['boutique']" id="data">
+            <if condition="$key eq 0 "> 
+             <li class="show_li" style="margin-left: 0px;">
+            <else />  
+            <li class="show_li"  >
+            </if>
+                <!-- <li class="show_li" style="margin-left: 0px;"> -->
+                    <a href="{:U('Market/details',['app_id'=>$data['appid']])}" target="_blank"> <img src="{$Think.config.OSS_DOMAIN}{$data['picture']}" alt=""></a>
+                    <p class="show_title">{$data.name}</p>
+                </li>
+            </volist>
+        </ul>
+        <div class="nape_title">
+            装机必备
+        </div>
+        <div class="use_ul after">
+            <div class="essential">
+                <a class="arrow-left" href="#"></a>
+                <a class="arrow-right" href="#"></a>
+                <div class="swiper-container essential_swiper">
+                    <div class="swiper-wrapper">
+                     <volist name="recommend_necessary" id="list">
+                        <div class="swiper-slide">
+                            <volist name="list" id="arr">
+                                <div class="use_li">
+                                    <a href="{:U('Market/details',['app_id'=>$arr['gameid']])}" target="_blank"><img src="{$Think.config.OSS_DOMAIN}{$arr['picture']}" alt=""></a>
+                                    <p class="user_li_title">{$arr.name}</p>
+                                    <a href="{:U('Index/appDownload',['app_id'=>$arr['gameid']])}"><div class="button">立即下载</div></a>
+                                </div>
+                            </volist>
+                        </div>
+                    </volist>
+                    </div>
+                </div>
+                <div class="pagination"></div>
+            </div>
+        </div>
+    </div>
+    <div class="h_40"></div>
+     <include file="Public/footer" /> 
+</div>
+</body>
+<script>
+  $('.tab_li_img').hide();
+     $('#recommend').show();
+    $(function(){
+        var mySwiper = new Swiper('.swiper-container',{
+            pagination: '.device .pagination',
+            loop:true,
+            autoplay: 3000,
+            grabCursor: true,
+            paginationClickable: false
+        })
+//
+        var mySwipers = new Swiper('.recommend_swiper',{
+            pagination: '.recommend .pagination',
+            loop:true,
+            paginationClickable: false
+        })
+        $('.recommend .arrow-left').on('click', function(e){
+            e.preventDefault()
+            mySwipers.swipePrev()
+        })
+        $('.recommend .arrow-right').on('click', function(e){
+            e.preventDefault()
+            mySwipers.swipeNext()
+        })
+        var mySwiperes = new Swiper('.essential_swiper',{
+            pagination: '.essential .pagination',
+            loop:true,
+            paginationClickable: false
+        })
+        $('.essential .arrow-left').on('click', function(e){
+            e.preventDefault()
+            mySwiperes.swipePrev()
+        })
+        $('.essential .arrow-right').on('click', function(e){
+            e.preventDefault()
+            mySwiperes.swipeNext()
+        })
+    })
+</script>
+ <script type="text/javascript" src="__PUBLIC__/home/js/search.js"></script>
+</html>

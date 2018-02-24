@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>优乐-{$title}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/Public/home/img/x_icon.png">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="__PUBLIC__/home/css/reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/home/css/search.css">
+    <script type="text/javascript" src="__PUBLIC__/home/js/jquery-1.8.3.min.js"></script>
+    <style>
+
+    a{text-decoration: none}
+
+    </style>
+</head>
+<body class="bg">
+<div class="main">
+ 
+
+     <include file="Public/header" />  
+
+    <div class="content after">
+       
+        <include file="Public/tab_after" />  
+        <p class="seach_title">一共为您找到 <span>{:count($app_list)}</span> 款 "<span>{$app_name}</span>"相关应用</p>
+        <ul class="ul_search">
+            <volist name="app_list" id="arr">
+                <li class="search_li">
+                   <!--  <img class="search_img" src="__PUBLIC__/home/img/icon22.png" alt=""> -->
+                    <a href="{:U('Market/details',['app_id'=>$arr['gameid']])}"><img class="search_img" src="{$Think.config.OSS_DOMAIN}{$arr['picture']}" alt=""></a>
+                    <div class="search_con">
+                        <p class="search_title">{$arr.name}</p>
+                        <p class="search_font">
+                        {:mb_substr(strip_tags($arr['introduce']),0,30,'utf-8')}...
+                        </p>
+                       
+                    </div>
+                    <div class="num">
+                        <div class="star">
+                            <img src="__PUBLIC__/home/img/star{:ceil($arr['comment'])}.png" alt="">
+                            <span>{$arr.comment}分</span>
+                        </div>
+                        <p class="down">
+
+
+                            <if condition="$arr.people gt 10000">
+                            {:sprintf('%.2f', $arr['people']/10000)} 万
+                            <else /> 
+                            {$arr.people}
+                            </if>
+                            次下载
+                         </p>
+                    </div>
+                    <a href="{:U('Index/appDownload',['app_id'=>$arr['gameid']])}"> <div class="button">立即下载</div> </a>
+                </li>
+            </volist>
+ 
+        </ul>
+    </div>
+    <div class="h_40"></div>
+    <include file="Public/footer" /> 
+</div>
+</body>
+
+ <script type="text/javascript" src="__PUBLIC__/home/js/search.js"></script>
+</html>

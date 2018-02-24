@@ -1,0 +1,17 @@
+ <div class="tab after">
+            <ul class="tab_ul after">
+                <li class="tab_li"><a href="{:U('Market/apply',['type'=>recommend])}">推荐</a><img src="__PUBLIC__/home/img/icon11.png"  id='recommend' class="tab_li_img"></li>
+                <li class="tab_li "><a href="{:U('Market/apply',['type'=>apply])}">应用</a><img src="__PUBLIC__/home/img/icon11.png" id='apply' class="tab_li_img"></li>
+                <li class="tab_li"><a href="{:U('Market/apply',['type'=>game])}">游戏</a><img src="__PUBLIC__/home/img/icon11.png" id='game' class="tab_li_img"></li>
+                <li class="tab_li"><a href="{:U('Market/apply',['type'=>banking])}">金融</a><img src="__PUBLIC__/home/img/icon11.png" id='banking' class="tab_li_img"></li>
+            </ul>
+            <div class="seach">
+                <input  list="app-search" placeholder="找应用" class="seach_val">
+                <datalist id="app-search"  > 
+                 <volist name="app_name_list" id="arr">
+                    <option value="{$arr}">       
+                 </volist>
+                </datalist> 
+                <img class="seach_img" url="{:U('Market/search')}" src="__PUBLIC__/home/img/icon21.png" alt=""> 
+            </div>
+        </div>

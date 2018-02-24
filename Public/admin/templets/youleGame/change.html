@@ -1,0 +1,133 @@
+<link href="/Public/admin/js/libs/umeditor1_2_2-utf8-php/themes/default/css/umeditor.min.css" type="text/css" rel="stylesheet">
+<div class="position"><i class="glyphicon glyphicon-paperclip"></i><span>优乐-游戏</span></div>
+<div class="panel panel-primary"  id="#myModal">
+    <div class="panel-heading">
+        <h3 class="panel-title">修改游戏</h3>
+        <div class="optDiv" style="float:right">
+            <button class="btn reload" role="jump2list">返回列表</button>
+        </div>
+    </div>
+    <div class="panel-body form-group">
+        <div class="chart_form_div" id="chart_form_div">
+            <form id="myform" >
+                <input name="id" type="hidden" />
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label">名称：</label>
+                        <input name="name" type="text" class="text" />
+                    </div>
+                    <!--  <div class="col-md-4">
+                        <label class="control-label">包名：</label>
+                        <input name="apkname" type="text" class="text" />
+                    </div> -->
+                     <!-- <div class="col-md-4">
+                        <label class="control-label">包大小：</label>
+                        <input name="apk_size" type="text" class="text" />
+                    </div> -->
+                    <div class="col-md-4">
+                      
+                        <!-- <label class="control-label"> 排行榜：</label> -->
+                        <label class=" "> 排行榜(PC)：</label>
+                     <input style="width: 20px; margin-top: 8px" name="ranking1" type="checkbox" value='1' />下载排行榜
+                      <input style="width: 20px; margin-top: 8px" name="ranking2" type="checkbox" value='1' />飙升排行榜
+                      
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label">下载量：</label>
+                        <input name="people" type="text" class="text" />
+                    </div>
+                    <!--  <div class="col-md-4">
+                        <label class="control-label">版本：</label>
+                        <input name="versioninfo" type="text" class="text" />
+                    </div> -->
+                     <div class="col-md-4">
+                        <label class="control-label">开发者</label>
+                        <input name="developer" type="text" class="text" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label">游戏评分：</label>
+                        <select  role="pageSize" name="comment">
+                            <option value="5.0">5.0</option>
+                            <option value="4.5">4.5</option>
+                            <option value="4.0">4.0</option>
+                            <option value="3.5">3.5</option>
+                            <option value="3.0">3.0</option>
+                            <option value="2.5">2.5</option>
+                            <option value="2.0">2.0</option>
+                            <option value="1.5">1.5</option>
+                            <option value="1.0">1.0</option>
+                            <option value="0.5">0.5</option>
+                        </select>
+                    </div>
+                     <div class="col-md-4" >
+                        <label class="control-label">游戏类别</label>
+                        <input style="width: 20px; margin-top: 8px" name="apptype1" type="checkbox" value='1' />热门
+                        <input style="width: 20px; margin-top: 8px" name="apptype2" type="checkbox" value='1' />网络
+                        <input style="width: 20px; margin-top: 8px" name="apptype3" type="checkbox" value='1' />手机
+                        <input style="width: 20px; margin-top: 8px" name="apptype4" type="checkbox" value='1' />单机
+                        <em class="notice-err"></em>
+                    </div>
+                     <div class="col-md-4" >
+                        <label class="control-label">是否推荐</label>
+                        <input style="width: 20px; margin-top: 8px" name="istuijian" type="radio" value='1' checked="checked" />是
+                        <input style="width: 20px; margin-top: 8px" name="istuijian" type="radio" value='0' />否
+                        <em class="notice-err"></em>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" role="upimg">
+                        <label class="control-label">icon：</label>
+                        <input type="text" name="picture" class="file-input" />
+                        <div class="file-canvas">
+                            <div class="file-info">50 x 50</div>
+                            <div class="file-val hide"><img src="" /><i title="删除"></i></div>
+                            <div class="file-loading hide"></div>
+                            <input role="file-upload" type="file" />
+                        </div>
+                        <em class="notice-err-top"></em>
+                    </div>
+                    <div class="col-md-8">
+
+                    </div>
+                </div>
+                 <div class="row">
+                         <div class="col-md-8" role="multiimg">
+                            <label class="control-label-lg">游戏截图：</label>
+                            <input type="hidden">
+                            <div class="multi-file-canvas">
+                                <div class="file-info" data-type="0"></div>
+                                <input role="file-upload-multi" type="file" />
+                            </div>
+                            <div class="multi-warp">
+
+                            </div>
+                        </div>
+
+
+                          <div class="col-md-4" role="upimg" id="upimg">
+                            <label class="control-label">上传apk：</label>
+                            <input type="text" name="apk" class="file-input" />
+                            <div class="file-canvas">
+                                <div class="file-info">上传apk包</div>
+                                <div class="file-val hide" id="file-valapk"><img src="" /><i title="删除"></i></div>
+                                <div class="file-loading hide"></div>
+                                <input role="file-upload" type="file" />
+                            </div>
+                            <em class="notice-err-top"></em>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="control-label" style="padding-top:23px;">应用简介：</label>
+                        <textarea name="introduce" id="content" style="height:500px;width: 99%;"></textarea>
+                    </div>
+                </div>
+            </form>
+            <div class="btton"><button type="button" class="btn btn-primary r" role="saveChange">提 交</button></div>
+        </div>
+    </div>
+</div>

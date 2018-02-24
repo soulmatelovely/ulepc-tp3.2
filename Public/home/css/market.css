@@ -1,0 +1,262 @@
+.bg{
+    background:#fbfbfb;
+}
+.header {
+    background: #ffffff;
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    margin: 0 auto;
+}
+
+.nav {
+    width: 1200px;
+    height: 80px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.nav img {
+    vertical-align: middle;
+    position: relative;
+    top: -5px;
+}
+.nav_ul{
+    float: right;
+}
+.nav_li{
+    float: left;
+    font-size:18px;
+    color:#666666;
+    letter-spacing:0;
+    text-align:center;
+    line-height: 80px;
+    margin-right: 80px;
+}
+.nav_li img{
+    position: relative;
+    top: -3px;
+    /*left: 5px;*/
+}
+/**/
+.content{
+    width: 1200px;
+    margin: 0 auto;
+}
+.tab{
+    width: 1200px;
+}
+.tab_ul{
+    float: left;
+}
+.tab_li{
+    margin-right: 50px;
+    font-size:18px;
+    color:#666666;
+    letter-spacing:0;
+    text-align:center;
+    line-height: 85px;
+    float: left;
+    position: relative;
+    cursor: pointer;
+}
+.tab_active .tab_li_img{
+    display: block;
+}
+.tab_li_img{
+    position: absolute;
+    bottom: 19px;
+    left: 2px;
+    display: none;
+}
+.tab_li a{
+    color: #666666;
+}
+.tab_active a{
+    color: #4D80FF;
+}
+.seach{
+    background:#ffffff;
+    border:1px solid #dbdbdb;
+    border-radius:100px;
+    width:308px;
+    height:38px;
+    float: right;
+    margin-top: 26px;
+}
+.seach_val{
+    width: 240px;
+    height: 30px;
+    margin-left: 15px;
+    outline: none;
+    border: 0px;
+    font-size: 16px;
+}
+.seach_img{
+    position: relative;
+    top: 6px;
+    left: 13px;
+    cursor: pointer;
+}
+.small_banner{
+    margin: 0 auto;
+    width:1200px;
+    height:290px;
+    display: block;
+}
+.nape_title{
+    font-size:18px;
+    color:#000000;
+    letter-spacing:0;
+    text-align:left;
+    background:#f0faff;
+    width:1200px;
+    height:50px;
+    line-height: 50px;
+    border: 1px solid #ffffff;
+    padding-left: 15px;
+    margin-top: 15px;
+}
+.use_ul{
+ width: 1200px;
+    padding: 20px;
+    background: #ffffff;
+}
+.use_li{
+    width: 193px;
+    height: 200px;
+    float: left;
+    text-align: center;
+    padding: 20px 0px;
+}
+.use_li img{
+    width: 90px;
+    height: 90px;
+}
+.user_li_title{
+    font-size:16px;
+    color:#666666;
+    letter-spacing:0.47px;
+    text-align:center;
+    margin-bottom: 5px;
+}
+.button{
+    font-size:14px;
+    letter-spacing:0;
+    background-image:linear-gradient(-180deg, #f0f0f0 0%, #e5e5e5 100%);
+    border:1px solid #e2e2e2;
+    border-radius:6px;
+    width:90px;
+    height:30px;
+    text-align: center;
+    line-height: 30px;
+    margin: 0 auto;
+    color: #979797;
+    cursor: pointer;
+}
+.button:hover{
+    background:#4d80ff;
+    color: #ffffff;
+}
+.show_ul{
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0px 15px;
+    padding-top: 40px;
+    background: #ffffff;
+}
+.show_li{
+    width: 284px;
+    float: left;
+    margin-left: 11px;
+}
+.show_li img{
+    width: 284px;
+    height: 131px;
+}
+.show_title{
+    font-size:16px;
+    color:#000000;
+    letter-spacing:0.47px;
+    text-align:center;
+    margin-top: 13px;
+    margin-bottom: 15px;
+}
+.header {
+    width:  100%;
+    height: 80px;
+    line-height: 80px;
+}
+
+.nav {
+    width: 1200px;
+    height: 80px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.nav img {
+    vertical-align: middle;
+    position: relative;
+    top: -5px;
+}
+.nav_ul{
+    float: right;
+}
+.hoverm{
+    position: absolute;
+    top: 0px;
+    right: 43px;
+    background: rgba(0,0,0,0.5);
+    width:193px;
+    height:245px;
+    text-align: center;
+    display: none;
+}
+.hoverm_nav_li{
+    font-size:18px;
+    color:#ffffff;
+    letter-spacing:0;
+    text-align:center;
+    line-height: 80px;
+}
+.hoverm_nav_li img{
+    position: relative;
+    top: -3px;
+    /*left: 5px;*/
+}
+.hover_img{
+    width:120px;
+    height:120px;
+}
+.hoverm p{
+    font-size:16px;
+    color:#ffffff;
+    letter-spacing:0;
+    text-align:center;
+    line-height: 30px;
+}
+.nav_li{
+    float: left;
+    font-size:18px;
+    color:#666666;
+    letter-spacing:0;
+    text-align:center;
+    line-height: 80px;
+    margin-right: 80px;
+    cursor: pointer;
+}
+.nav_li img{
+    position: relative;
+    top: -3px;
+    /*left: 5px;*/
+}
+.nav_li a{
+    color: #666666;
+}
+#down:hover .hoverm{
+    display: inline-block;
+}
+.nav_active a{
+    color:#4d80ff;
+}
